@@ -1,0 +1,38 @@
+script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n', crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6', crossorigin='anonymous')
+
+
+html
+  head
+  body
+    .container
+      h2.text-center Example Shift API
+      .card
+        .card-header.bg-primary.text-white 1.Does shift belong to group
+        .card-body
+          .card
+            .card-body
+                    form#form-check-shift(role='form', method="POST", action='../api/checkshift')
+                        .row
+                            .col-sm-4
+                                .form-group.required 
+                                    label.control-label Shift Code
+                                    input#name.form-control(type='text', name='shiftCode', required='',value= data.code)
+                            .col-sm-4
+                                .form-group.required 
+                                    label.control-label Shift Group Code
+                                    input#name.form-control(type='text', name='shiftGroupCode', required='',value= data.group)   
+                            .col-sm-4
+                                .text-right.col-sm-8(style="top: 35%;")
+                                    div
+                                        a
+                                            button.btn.btn-success(type='submit', style='width: 80%;') Check                                                                                                        
+        .card-footer.bg-gradient-light 
+                        if data.status
+                            h2.green Shift Code is Present in Shift Group
+                        else
+                            h2.red Shift Code is not Present in Shift Group
+
+
